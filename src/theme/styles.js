@@ -20,6 +20,6 @@ export const transparentColorBox = {
     marginBlockEnd: 0, 
     paddingInlineStart: "2rem", 
     paddingInlineEnd: "2rem", 
-    paddingBlockStart: "2rem", 
-    paddingBlockEnd: "2rem",
+    paddingBlockStart: "1.5rem", 
+    paddingBlockEnd: "1.5rem",
 }
