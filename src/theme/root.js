@@ -1,0 +1,20 @@
+export const colors = {
+    primaryBase: "#212121",
+    secondaryBase: "#404040",
+    textColor: "#f0f0f0",
+    primaryHover: "#252525",
+    primaryLinkColor: "#505050",
+    linkTextColor: "#b22222",
+    primaryLinkTextColor: "#f0f0f0",
+    secondaryLinkTextColor: "#f0f0f0",
+    navBgColor: "hsl(0 0% 7% / 0.9)",
+    blogCardTextColor: "#f0f0f0",
+    bgColor: "#121212",
+    sectionOffwhiteColor: "#212121",
+    gradientColor: "#121212",
+    whiteBase: "#FFFFFF",
+    whiteSmokeBase: "#EBEBEB",
+    blackBase: "#000000",
+    greyFade: "#404040",
+    hrColor: "#303030"
+}

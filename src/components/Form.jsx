@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Outputtable from "./Outputtable";
+import { Button, Box, Container, FormControl, TextField, InputLabel, Select, MenuItem } from "@mui/material";
+import { colors } from "../theme/root";
+import { transparentColorBox } from "../theme/styles";
 
 function Form() {
 
@@ -15,25 +18,26 @@ function Form() {
     
     return ( 
         <>
-            <form action="" onSubmit={(event) => submitForm(event)} >
-                <div>
-                    <select name="denomination" id="denomination" onChange={(e) => setDenomination(e.target.value)}>
-                        <option value="new">New Currency Denomination</option>
-                        <option value="old">Old Currency Denomination</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="billAmount">Bill Amount: </label>
-                    <input type="number" name="billAmount" id="billAmount" onChange={(e) => setBill(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="customerAmount">Customer Amount: </label>
-                    <input type="number" name="customerAmount" id="customerAmount" onChange={(e) => setCustomerAmount(e.target.value)} />
-                </div>
-                <div>
-                    <button type="submit">Get Balance</button>
-                </div>
-            </form>
+            <Box sx={transparentColorBox} >
+                <Container maxWidth="md" >
+                    <FormControl sx={{ m: 1, minWidth: 120 }} >
+                            <InputLabel id="denomination-label">Denomination</InputLabel>
+                            <Select labelId="denomination-label" label="Denomination" id="denomination" onChange={(e) => setDenomination(e.target.value)}>
+                                <MenuItem value="new">New Currency Denomination</MenuItem>
+                                <MenuItem value="old">Old Currency Denomination</MenuItem>
+                            </Select>
+                    </FormControl>
+
+                    <FormControl sx={{ m: 1, minWidth: 120 }} >
+                            <TextField id="billAmount" label="Bill Amount" variant="standard" onChange={(e) => setBill(e.target.value)} />
+                    </FormControl>
+
+                    <FormControl sx={{ m: 1, minWidth: 120 }} >
+                            <TextField id="customerAmount" label="Customer Amount" variant="standard" onChange={(e) => setCustomerAmount(e.target.value)} />
+                    </FormControl>
+                    <Button sx={{backgroundColor: colors.primaryLinkColor}} variant="contained" type="submit" onClick={(event) => submitForm(event)}>Get Balance</Button>
+                </Container>
+            </Box>
             <Outputtable visibility={visibility} bill={bill} amount={customerAmount} currency={denomination} />
         </>
      );
