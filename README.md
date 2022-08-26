@@ -1,5 +1,3 @@
-# cash-register
- React app for cash register
 # About
  Gives the exact amount of notes to return to the customer according to the bill amount and received amount.
 
