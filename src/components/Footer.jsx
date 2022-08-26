@@ -23,13 +23,13 @@ function Footer() {
           sx={{
             py: 3,
             px: 2,
-            mt: 'auto',
+            top: "100vh",
             position: "sticky",
             backgroundColor: (theme) => theme.palette.mode === 'light'? theme.palette.grey[200] : theme.palette.grey[800]}}
         >
           <Container maxWidth="md" align="center">
             <Typography variant="body1">
-              Social Links {' '}
+              Social Links{' '}
                 <Link color="inherit" href="https://github.com/abhijeetsingla">Github</Link>{' '}
                 <Link color="inherit" href="https://linkedin.com/in/abhijeetsingla1553">LinkedIn</Link>{' '}
                 <Link color="inherit" href="mailto:abhijeetsingla1553@gmail.com">Email</Link>{' '}
