@@ -10,6 +10,11 @@ function Form() {
     const [bill, setBill] = useState(0);
     const [customerAmount, setCustomerAmount] = useState(0);
     const [denomination, setDenomination] = useState("new");
+
+    const inputProps = {
+        min: 1,
+        step: 1
+    }
     
     function submitForm(event) {
         event.preventDefault();
@@ -18,7 +23,7 @@ function Form() {
     
     return ( 
         <>
-            <Box sx={transparentColorBox} >
+            <Box sx={transparentColorBox} component="form" onSubmit={(event) => submitForm(event)} >
                 <Container maxWidth="md" >
                     <FormControl sx={{ m: 1, minWidth: 260 }} >
                             <InputLabel id="denomination-label">Denomination</InputLabel>
@@ -28,14 +33,14 @@ function Form() {
                             </Select>
                     </FormControl>
                     <FormControl sx={{ m: 1, minWidth: 120 }} >
-                            <TextField id="billAmount" label="Bill Amount" variant="standard" onChange={(e) => setBill(e.target.value)} />
+                            <TextField error={bill < 0} required inputProps={inputProps} type="number" id="billAmount" label="Bill Amount" variant="standard" onChange={(e) => {if(e.target.value) setBill(parseInt(e.target.value))}} />
                     </FormControl>
                     <FormControl sx={{ m: 1, minWidth: 120 }} >
-                            <TextField id="customerAmount" label="Customer Amount" variant="standard" onChange={(e) => setCustomerAmount(e.target.value)} />
+                            <TextField error={bill > customerAmount} required inputProps={inputProps} type="number" id="customerAmount" label="Customer Amount" variant="standard" onChange={(e) => {if(e.target.value) setCustomerAmount(parseInt(e.target.value))}} />
                     </FormControl>
                 </Container>
                 <Container maxWidth="md" align="center" sx={{ mt: 5}}>
-                    <Button variant="contained" type="submit" onClick={(event) => submitForm(event)}>Get Balance</Button>
+                    <Button variant="contained" type="submit">Get Balance</Button>
                 </Container>
             </Box>
             <Outputtable visibility={visibility} bill={bill} amount={customerAmount} denomination={denomination} />
