@@ -16,5 +16,6 @@ export const colors = {
     whiteSmokeBase: "#EBEBEB",
     blackBase: "#000000",
     greyFade: "#404040",
-    hrColor: "#303030"
+    hrColor: "#303030",
+    error: "#d32f2f"
 }
