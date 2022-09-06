@@ -1,12 +1,11 @@
 import { useState } from "react";
 import Outputtable from "./Outputtable";
 import { Button, Box, Container, FormControl, TextField, InputLabel, Select, MenuItem } from "@mui/material";
-// import { colors } from "../theme/root";
 import { transparentColorBox } from "../theme/styles";
 
 function Form() {
 
-    const [visibility, setVisibility] = useState(false);
+    const [output, setOutput] = useState("");
     const [bill, setBill] = useState(0);
     const [customerAmount, setCustomerAmount] = useState(0);
     const [denomination, setDenomination] = useState("new");
@@ -15,12 +14,16 @@ function Form() {
         min: 1,
         step: 1
     }
+
+    function renderTable(bill, customerAmount, denomination) {
+        return <Outputtable bill={bill} amount={customerAmount} denomination={denomination} />
+    }
     
     function submitForm(event) {
         event.preventDefault();
-        setVisibility(true);
+        bill === customerAmount ?  setOutput("Seriously -_-") : setOutput(renderTable(bill, customerAmount, denomination))
     }    
-    
+
     return ( 
         <>
             <Box sx={transparentColorBox} component="form" onSubmit={(event) => submitForm(event)} >
@@ -43,7 +46,11 @@ function Form() {
                     <Button variant="contained" type="submit">Get Balance</Button>
                 </Container>
             </Box>
-            <Outputtable visibility={visibility} bill={bill} amount={customerAmount} denomination={denomination} />
+            <Box sx={transparentColorBox}>
+                <Container maxWidth="md" >
+                    {output}
+                </Container>
+            </Box>
         </>
      );
 }
